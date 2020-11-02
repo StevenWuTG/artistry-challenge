@@ -1,0 +1,17 @@
+<h1><%= @artist.name %></h1>
+<br>
+
+<p>Title: <%= @artist.title %></p>
+<p>Age: <%= @artist.age %></p>
+
+<h3>Instruments Owned:</h3>
+<ul>
+    <% @artist.instruments.each do |inst| %>
+    <li><%= link_to inst.name, instrument_path(inst) %></li>
+    <% end %>
+</ul>
+<h3><%= button_to "Register New Instrument", artist_path(@artist), params: {add_instrument: true}, method: :get %></h3>
+
+<% if @add_new_instrument%>
+    <%= render "form2" %>
+<% end%>
